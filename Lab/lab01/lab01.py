@@ -8,8 +8,11 @@ def digit(n, k):
     >>> digit(3579, 10)
     0
     """
-    return ____
-
+    digits = [int(d) for d in str(n)]
+    if k < len(digits):
+        return digits [-k-1]
+    else:
+        return 0
 
 def middle(a, b, c):
     """Return the number among a, b, and c that is not the smallest or largest.
@@ -26,7 +29,9 @@ def middle(a, b, c):
     >>> middle(30, 5, 40)
     30
     """
-    return ____
+    arr = [a,b,c]
+    sorted_arr = sorted ( arr )
+    return sorted_arr [1]
 
 
 def falling(n, k):
@@ -41,8 +46,15 @@ def falling(n, k):
     >>> falling(4, 0)
     1
     """
-    "*** YOUR CODE HERE ***"
-
+    falling_fac = n
+    while k > 1:
+        falling_fac = falling_fac * (n-1)
+        n = n - 1
+        k = k - 1
+    if k >=1:
+        return falling_fac
+    else:
+        return 1
 
 def divisible_by_k(n, k):
     """
@@ -64,7 +76,13 @@ def divisible_by_k(n, k):
     >>> c
     0
     """
-    "*** YOUR CODE HERE ***"
+    range_n = [i+1 for i in range(n)]
+    divisible = 0
+    for i in range_n:
+        if i % k == 0:
+            print(i)
+            divisible = divisible + 1
+    return divisible 
 
 
 def sum_digits(y):
@@ -80,7 +98,8 @@ def sum_digits(y):
     >>> a
     6
     """
-    "*** YOUR CODE HERE ***"
+    all_digits = [int(i) for i in str(y)]
+    return sum(all_digits)
 
 
 def double_eights(n):
@@ -98,5 +117,14 @@ def double_eights(n):
     >>> double_eights(80808080)
     False
     """
-    "*** YOUR CODE HERE ***"
+    all_digits = [int(i) for i in str(n)]
+    if len(all_digits) == 1:
+        return False
+    i = 0
+    while i < len(all_digits) :
+        if all_digits[i] == 8:
+            if all_digits[i+1] == 8:
+                return True
+        i = i + 1
+    return False
 
